@@ -1,0 +1,40 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<graph>
+  <size>19</size>
+  <edge start="0" end="7"/>
+  <edge start="0" end="15"/>
+  <edge start="0" end="11"/>
+  <edge start="1" end="8"/>
+  <edge start="1" end="3"/>
+  <edge start="1" end="6"/>
+  <edge start="2" end="12"/>
+  <edge start="2" end="6"/>
+  <edge start="2" end="17"/>
+  <edge start="3" end="13"/>
+  <edge start="3" end="6"/>
+  <edge start="3" end="8"/>
+  <edge start="3" end="4"/>
+  <edge start="3" end="9"/>
+  <edge start="4" end="9"/>
+  <edge start="4" end="13"/>
+  <edge start="5" end="14"/>
+  <edge start="5" end="6"/>
+  <edge start="5" end="17"/>
+  <edge start="6" end="17"/>
+  <edge start="6" end="9"/>
+  <edge start="7" end="11"/>
+  <edge start="7" end="16"/>
+  <edge start="8" end="13"/>
+  <edge start="10" end="18"/>
+  <edge start="10" end="11"/>
+  <edge start="10" end="16"/>
+  <edge start="11" end="15"/>
+  <edge start="11" end="16"/>
+  <edge start="11" end="18"/>
+  <edge start="12" end="17"/>
+  <edge start="12" end="15"/>
+  <edge start="14" end="17"/>
+  <edge start="14" end="15"/>
+  <edge start="15" end="17"/>
+  <edge start="15" end="18"/>
+</graph>
