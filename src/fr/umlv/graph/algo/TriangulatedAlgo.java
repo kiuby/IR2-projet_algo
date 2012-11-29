@@ -42,7 +42,7 @@ public class TriangulatedAlgo {
 		/**
 		 * The list of vertex, that represent the set
 		 */
-		List<Vertex> graphList;
+		private List<Vertex> graphList;
 		
 		/**
 		 * Default constructor. Init our current list of vertex.
@@ -50,31 +50,31 @@ public class TriangulatedAlgo {
 		public Ensemble(){
 			graphList = new LinkedList<>();
 		}
-	}
-
-	/**
-	 * Convert a graph, which is composed by a tab of vertex, into a Ensemble, which is composed by a list of vertex.
-	 * @param graph - the graph to convert
-	 * @return an Ensemble, which have the same vertex than the graph, but store as a list
-	 */
-	private static Ensemble convertGraphIntoElement(Graph graph){
-		Ensemble ens = new Ensemble();
-		for(int i=0;i<graph.getVertexCount();i++)
-			ens.graphList.add(graph.getVertex(i));
-		return ens;
-	}
-	
-	/**
-	 * Convert the list of Vertex as an order, similar to the same method in class graph.
-	 * @param ensemble - the list of vertex to convert into an order
-	 * @return a tab init with the value containing the order of the vertex
-	 */
-	private static int[] convertElemAsOrder(List<Vertex> ensemble) {
-		int [] orderTab = new int [ensemble.size()];//We have sort our Graph, now we have to instantiate our Order tab
 		
-		for(int i=0;i<ensemble.size();i++)
-			orderTab[i]=ensemble.get(i).getIdVertex();
-		return orderTab;
+		/**
+		 * Convert a graph, which is composed by a tab of vertex, into a Ensemble, which is composed by a list of vertex.
+		 * @param graph - the graph to convert
+		 * @return an Ensemble, which have the same vertex than the graph, but store as a list
+		 */
+		private static Ensemble convertGraphIntoEnsemble(Graph graph){
+			Ensemble ens = new Ensemble();
+			for(int i=0;i<graph.getVertexCount();i++)
+				ens.graphList.add(graph.getVertex(i));
+			return ens;
+		}
+		
+		/**
+		 * Convert the list of Vertex as an order, similar to the same method in class graph.
+		 * @param ensemble - the list of vertex to convert into an order
+		 * @return a tab init with the value containing the order of the vertex
+		 */
+		private static int[] convertElemAsOrder(List<Vertex> ensemble) {
+			int [] orderTab = new int [ensemble.size()];//We have sort our Graph, now we have to instantiate our Order tab
+			
+			for(int i=0;i<ensemble.size();i++)
+				orderTab[i]=ensemble.get(i).getIdVertex();
+			return orderTab;
+		}
 	}
 	
 	/**
@@ -135,11 +135,11 @@ public class TriangulatedAlgo {
 		List<Ensemble> ens_P = new LinkedList<>();
 		List<Vertex> ens_L = new LinkedList<>();
 		
-		ens_P.add(convertGraphIntoElement(graphTmp));//init of P
+		ens_P.add(Ensemble.convertGraphIntoEnsemble(graphTmp));//init of P
 		while(!ens_P.isEmpty())//the algo
 			findGoodOrder(ens_P, ens_L);
 		
-		return convertElemAsOrder(ens_L);
+		return Ensemble.convertElemAsOrder(ens_L);
 	}
 	
 	/**
