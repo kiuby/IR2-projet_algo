@@ -1,4 +1,7 @@
 /bin/fr/umlv/graph/main/*.class
 /bin/fr/umlv/graph/algo/*.class
-*.class
+/bin/fr/umlv/graph/util/*.class
 /bin/fr/umlv/graph/test/*.class
+/bin/fr/umlv/graph/*.class
+*.class
+
