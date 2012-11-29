@@ -28,7 +28,7 @@ public class Main {
 	public static void displayOrder(int [] order){
 		System.out.print("Order : { ");
 		for(int i=0;i<order.length;i++){
-			System.out.print(" "+i);
+			System.out.print(" "+order[i]);
 			if(i+1<order.length)
 				System.out.print(",");
 		}
