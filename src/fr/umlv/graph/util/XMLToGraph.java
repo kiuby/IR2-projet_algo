@@ -14,11 +14,34 @@ import org.xml.sax.helpers.DefaultHandler;
 import fr.umlv.graph.Edge;
 import fr.umlv.graph.Graph;
 
+/**
+ * This class does parser of a XML file into our Graph structure.
+ * 
+ *  * @author Quentin Bernard et Ludovic Feltz
+ */
+
+/* <This program is a program which colored graph, by using some algorithms, made by IR students.>
+ *  Copyright (C) <2012>  <BERNARD Quentin & FELTZ Ludovic>
+
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 
 public class XMLToGraph{
 	
 	/*
-	 * Le handler XML
+	 * Xml Handler
 	 */
 	private static class GraphHandler extends DefaultHandler {
 		private StringBuilder sb;
@@ -81,8 +104,11 @@ public class XMLToGraph{
 		}		
 	}
 	
-	
-	
+	/**
+	 * Return a graph, initialize with the corresponding file given in parameter
+	 * @param f - the file which contains all edge of graph 
+	 * @return the new graph, initialize by the file
+	 */
 	public static Graph getGraphFromXml(File f){
 		GraphHandler gh = new GraphHandler();
 		try {
@@ -103,10 +129,10 @@ public class XMLToGraph{
 		return gh.getGraph();
 	}
 
+	/*
 	public static void main(String[] args) {
 		File f = new File("src/fr/umlv/graph/util/graph1.xml");
 		Graph g = getGraphFromXml(f);
-		System.out.println(g.toString());
-	}
-
+		System.out.println(g);
+	}*/
 }

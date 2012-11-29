@@ -1,7 +1,4 @@
-/**
- * @author Quentin Bernard(qbernard@etudiant.univ-mlv.fr)
- * Copyright Universite de Marne-la-Vallee
- */
+
 package fr.umlv.graph.test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,6 +7,31 @@ import org.junit.Test;
 
 import fr.umlv.graph.Edge;
 import fr.umlv.graph.Graph;
+
+/**
+ * This class does the test of our Graph structure, in order to check if we have correctly implements the graph.
+ * 
+ * 
+ *  * @author Quentin Bernard et Ludovic Feltz
+ */
+
+/* <This program is a program which colored graph, by using some algorithms, made by IR students.>
+ *  Copyright (C) <2012>  <BERNARD Quentin & FELTZ Ludovic>
+
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 
 public class GraphTest {
 
