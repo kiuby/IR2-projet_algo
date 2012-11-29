@@ -41,7 +41,15 @@ public class WelshPowellAlgo {
 	 * @return
 	 */
 	public static Graph welshPowellAlgo (Graph graph){
-		
+		return GreedyColoring.greedyColoring(graph, getOrder(graph));
+	}
+	
+	/**
+	 * Return the Order need by the WelshPowellAlgo, which is represented by the degree of vertex, sort by descendant way.
+	 * @param graph - the graph to get the Welsh Powell Order
+	 * @return the Welsh Powell Order associated with the graph
+	 */
+	public static int[] getOrder(Graph graph){
 		Graph graphTmp = new Graph(graph.getGraph());//Init a temporary graph, to do the sort with
 		Arrays.sort(graphTmp.getGraph(), new Comparator<Vertex>() {
 			@Override
@@ -53,7 +61,6 @@ public class WelshPowellAlgo {
 				return 0;
 			}
 		});
-		
-		return GreedyColoring.greedyColoring(graph, graphTmp.convertVertexAsOrder());
+		return graphTmp.convertVertexAsOrder();
 	}
 }

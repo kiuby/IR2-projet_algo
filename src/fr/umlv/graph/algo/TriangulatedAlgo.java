@@ -57,7 +57,7 @@ public class TriangulatedAlgo {
 	 * @param graph - the graph to convert
 	 * @return an Ensemble, which have the same vertex than the graph, but store as a list
 	 */
-	public static Ensemble convertGraphIntoElement(Graph graph){
+	private static Ensemble convertGraphIntoElement(Graph graph){
 		Ensemble ens = new Ensemble();
 		for(int i=0;i<graph.getVertexCount();i++)
 			ens.graphList.add(graph.getVertex(i));
@@ -77,26 +77,6 @@ public class TriangulatedAlgo {
 		return orderTab;
 	}
 	
-	/**
-	 * Does the job : Split P by Ensemble which are more smaller, and add the vertex when it's process is finished.
-	 * @param ens_P - the list of Ensemble, that contains the graph
-	 * @param ens_L - the list of vertex, which are the list of order
-	 */
-	private static void findGoodOrder(List<Ensemble> ens_P, List<Vertex> ens_L) {
-		List<Ensemble> ens_PTmp = new LinkedList<>();//Uses only to add during an iteration of ens_P
-		Vertex elem_v = ens_P.get(0).graphList.remove(0);
-		ens_L.add(elem_v);
-		if(ens_P.get(0).graphList.size() == 0)
-			ens_P.remove(0);
-		
-		for(Ensemble E : ens_P){
-			splitSubset(ens_PTmp, elem_v, E);
-		}
-		ens_P.clear();//Copy our temporaly list into our current list P
-		ens_P.addAll(ens_PTmp);
-		ens_PTmp.clear();
-	}
-
 	/**
 	 * Split the Ensemble E in two Ensemble, where one is represents the brother of elem_v, and the other one everything else.
 	 * Add it to the List of Ensemble ens_PTmp.
@@ -123,13 +103,33 @@ public class TriangulatedAlgo {
 			ens_PTmp.add(E);
 	}
 	
+	
 	/**
-	 * Do the coloring of the graph, by return a new one, using the optimization of triangulation.
-	 * @param graph - the graph to color
-	 * @return a new color which is color, using the optimization of triangulation if the graph is triangulated, else no warranty of the minimal color of the graph
+	 * Does the job : Split P by Ensemble which are more smaller, and add the vertex when it's process is finished.
+	 * @param ens_P - the list of Ensemble, that contains the graph
+	 * @param ens_L - the list of vertex, which are the list of order
 	 */
-	public static Graph triangulatedAlgo (Graph graph){
+	private static void findGoodOrder(List<Ensemble> ens_P, List<Vertex> ens_L) {
+		List<Ensemble> ens_PTmp = new LinkedList<>();//Uses only to add during an iteration of ens_P
+		Vertex elem_v = ens_P.get(0).graphList.remove(0);
+		ens_L.add(elem_v);
+		if(ens_P.get(0).graphList.size() == 0)
+			ens_P.remove(0);
 		
+		for(Ensemble E : ens_P){
+			splitSubset(ens_PTmp, elem_v, E);
+		}
+		ens_P.clear();//Copy our temporaly list into our current list P
+		ens_P.addAll(ens_PTmp);
+		ens_PTmp.clear();
+	}
+	
+	/**
+	 * Return the Order need by the TriangulatedAlgo.
+	 * @param graph - the graph to get the Triangulated Order
+	 * @return the Triangulated Order associated with the graph
+	 */
+	public static int[] getOrder(Graph graph) {
 		Graph graphTmp = new Graph(graph.getGraph());
 		
 		List<Ensemble> ens_P = new LinkedList<>();
@@ -139,6 +139,15 @@ public class TriangulatedAlgo {
 		while(!ens_P.isEmpty())//the algo
 			findGoodOrder(ens_P, ens_L);
 		
-		return GreedyColoring.greedyColoring(graph, convertElemAsOrder(ens_L));
+		return convertElemAsOrder(ens_L);
+	}
+	
+	/**
+	 * Do the coloring of the graph, by return a new one, using the optimization of triangulation.
+	 * @param graph - the graph to color
+	 * @return a new color which is color, using the optimization of triangulation if the graph is triangulated, else no warranty of the minimal color of the graph
+	 */
+	public static Graph triangulatedAlgo (Graph graph){
+		return GreedyColoring.greedyColoring(graph, getOrder(graph));
 	}
 }

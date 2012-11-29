@@ -12,7 +12,6 @@ import fr.umlv.graph.algo.WelshPowellAlgo;
 
 public class AlgoTest {
 	Graph graph = new Graph(4);
-	int [] order = new int[4];
 	
 	public void initGraphTest(){
 		graph.addEdge(new Edge(0, 1));
@@ -20,16 +19,10 @@ public class AlgoTest {
 		graph.addEdge(new Edge(1, 3));
 	}
 	
-	public void initOrder(){
-		for(int i=0;i<4;i++)
-			order[i]=i;
-	}
-	
 	@Test
 	public void greedyColoringTest(){
 		initGraphTest();
-		initOrder();
-		Graph colorList = GreedyColoring.greedyColoring(graph, order);
+		Graph colorList = GreedyColoring.greedyColoring(graph, GreedyColoring.getOrder(graph));
 		Assert.assertEquals(2, colorList.getColors());
 	}
 	

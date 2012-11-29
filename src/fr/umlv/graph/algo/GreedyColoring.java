@@ -31,6 +31,18 @@ import fr.umlv.graph.Graph;
 public class GreedyColoring {
 
 	/**
+	 * Return the Natural Order, to do GreedyColoring as default.
+	 * @param graph - the Graph to init the Order Tab
+	 * @return the tab of order, corresponding to the natural order of the vertex, in the graph
+	 */
+	public static int[] getOrder(Graph graph){
+		int[] order = new int[graph.getVertexCount()];
+		for(int i=0;i<graph.getVertexCount();i++)
+			order[i]=i;
+		return order;
+	}
+	
+	/**
 	 * Do the coloring of a graph, by process the vertex as the order given as parameter. Be care, the initial graph is not modified, and a new one is returned.
 	 * @param graph - the graph to color
 	 * @param orderVertex - the order concerning the vertex 
@@ -42,7 +54,7 @@ public class GreedyColoring {
 			checkAndSetValidColor(graphColor, orderVertex[i]);
 		return graphColor;
 	}
-	
+
 	/**
 	 * Check what minimal color is needed to color the vertex at position indexVertex, and color it.
 	 * @param graphColor - the graph to know all vertex
