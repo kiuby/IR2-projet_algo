@@ -1,1 +1,12 @@
 /bin/fr/umlv/graph/main/*.class
+/bin/fr/umlv/graph/algo/*.class
+*.class
+*.class
+*.class
+/bin/fr/umlv/graph/algo/*.class
+/bin/fr/umlv/graph/algo/TriangulatedAlgo.class
+/bin/fr/umlv/graph/main/Main$Param.class
+/bin/fr/umlv/graph/test/*.class
+/bin/fr/umlv/graph/test/*.class
+/bin/fr/umlv/graph/test/*.class
+/bin/fr/umlv/graph/main/Main.class
